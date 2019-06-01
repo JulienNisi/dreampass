@@ -1,0 +1,85 @@
+body {
+    background-color:  #fafafa;
+}
+
+.seting {
+    height: 40em;
+    margin-top: 6.5em;
+    font-family: "Segoe UI";
+    color: black;
+    margin-right: 101em;
+    width: 15em;
+    margin-left: 30em;
+    background-color:  white;
+    border: 1px solid #dbdbdb;
+}
+
+.seting li {
+    height: 2em;
+    padding-top: 1.2em;
+    margin-left: -1.4em;
+    padding-bottom: 2.6em;
+    font-size: 1em;
+    text-align: left;
+    list-style-type: none;
+    font-weight:bold;
+}
+
+article {
+    height: 40em;
+    width: 43.55em;
+    background-color:  white;
+    position: absolute;
+    top: 8.5em;
+    left: 27.8em;
+
+    margin-left: 17.1em;
+    border: 1px solid #dbdbdb;
+}
+
+.D1 {
+    margin-top: 1.8em;
+}
+
+.D1 .d1 {
+    margin-left: 9.65em;
+    font-size: 20px;
+    line-height: 22px;
+    margin-bottom: 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight:bold;
+}
+
+.FD1 {
+
+}
+
+.FDA {
+    padding: 32px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 18px;
+    margin-top: 6px;
+    padding-left: 6.55em;
+    margin-right: 32.5em;
+}
+
+.FDA label {
+    text-align: left;
+    width: 4.3em;
+}
+
+.FDD {
+    margin-top: -4em;
+    margin-left: 12em;
+}
+
+aside {
+    font-weight:bold;
+}
+
+.FI {
+	display: none;
+}

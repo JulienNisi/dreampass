@@ -1,0 +1,32 @@
+h1 {
+	text-shadow: 3px 2px white;
+}
+
+.test4 {
+	height: 350px;
+	width: 700px;
+	position: absolute;
+	top: 41.5em;
+	left: 52.5em;
+	border: 3px solid black;
+}
+
+
+.ANAV {
+	margin-left: 25em;
+	width: 325px;
+	height: 500px;
+}
+.AINAV {
+	max-width: 325px;
+	max-height: 500px;
+}
+
+.FileA {
+	width: 1150px;
+	height: 600px;
+	border-left: 300px;
+	margin-left: 25em;
+	font-
+	border: 4px solid black;
+}
