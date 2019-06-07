@@ -1,14 +1,21 @@
-.test {
-	background-color: #343a40; /* Green */
-	border: none;
-	color: white;
-	padding: 15px 32px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	font-size: 1em;
-}
-
 .donc {
 	margin-left: 20em;
+}
+
+.button {
+	background-color:  #343a40;
+	margin-right: 3em;
+	border: none;
+}
+
+.DBI {
+	position: absolute;
+	top: 2.5em;
+	left: 7em;
+	border: red;
+    background-color: #FFFFFF;
+    height: 38px;
+    width: 38px;
+    -moz-border-radius:75px;
+    -webkit-border-radius: 75px;
 }

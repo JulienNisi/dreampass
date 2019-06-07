@@ -3,7 +3,7 @@ body {
 }
 
 .seting {
-    height: 40em;
+    height: 62em;
     margin-top: 6.5em;
     font-family: "Segoe UI";
     color: black;
@@ -25,8 +25,13 @@ body {
     font-weight:bold;
 }
 
+.seting a {
+    color: black;
+}
+
+
 article {
-    height: 40em;
+    height: 62em;
     width: 43.55em;
     background-color:  white;
     position: absolute;
@@ -38,8 +43,12 @@ article {
 }
 
 .D1 {
-    margin-top: 1.8em;
+    margin-top: 2.8em;
+    margin-left: 1em;
+    padding-bottom: 2em;
 }
+
+
 
 .D1 .d1 {
     margin-left: 9.65em;
