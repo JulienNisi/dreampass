@@ -46,7 +46,7 @@ class Forum extends CI_Controller
 			);
 			$this->db->where('email',$_SESSION['name']);
 			$this->db->update('utilisateurs', $data);
-			redirect("index.php/Forum/edit", "refresh");
+			redirect("http://localhost/CodeIgniter-3.1.10/index.php/Forum/edit", "refresh");
 		}
 		$config['upload_path']          = './img/';
 		$config['allowed_types']        = 'gif|jpg|png';
@@ -64,7 +64,7 @@ class Forum extends CI_Controller
 				);
 				$this->db->where('email',$_SESSION['name']);
 				$this->db->update('utilisateurs', $url);
-				redirect("index.php/Forum/profile", "refresh");
+				redirect("http://localhost/CodeIgniter-3.1.10/index.php/Forum/profile", "refresh");
 		}
 
 		$config['upload_path']          = './img/';
@@ -83,7 +83,7 @@ class Forum extends CI_Controller
 					"url_photo" => $data['img']
 				);
 				$this->db->insert('photos', $url);
-				redirect("index.php/Forum/profile", "refresh");
+				redirect("http://localhost/CodeIgniter-3.1.10/index.php/Forum/profile", "refresh");
 		}
 	}
 	public function home()
@@ -93,17 +93,42 @@ class Forum extends CI_Controller
 			$_SESSION['online'] = false;
 		}*/
 		//die();
-		$this->load->view('home');
+		$this->form_validation->set_rules('search_box', 'Votre mail', 'trim');
+		if ($this->form_validation->run() == TRUE) {
+			$search = $_POST['search_box'];
 
+			$this->load->model("News_model");
+			$result = array();
+			$result = $this->News_model->search_profil($search);
+			$photos = array();
+			$photos = $this->News_model->get_photos($result[0]->email);
+			$data = array(
+				'nom' => $result[0]->nom,
+				'prenom' => $result[0]->prenom,
+				'cheveux' => $result[0]->cheveux,
+				'taille' => $result[0]->taille,
+				'poids' => $result[0]->poids,
+				'yeux' => $result[0]->yeux,
+				'bio' => $result[0]->bio,
+				'photo' => $result[0]->photo,
+				'pseudo' => $result[0]->pseudo,
+				'test' => $photos,
+				'bug' => $_SESSION['name']
+			);
+			$this->load->view('profile', $data);
+			$_SESSION['name'] = $_SESSION['name'];
+		}
+		else
+			$this->load->view('home');
 	}
 
 	public function logout() {
 		unset($_SESSION['online']);
-		redirect("index.php/Forum/home", "refresh");
+		redirect("http://localhost/CodeIgniter-3.1.10/index.php/Forum/home", "refresh");
 	}
 	public function profile() {
 		if (!($_SESSION['online']))
-			redirect("index.php/Forum/home", "refresh");
+			redirect("http://localhost/CodeIgniter-3.1.10/index.php/Forum/home", "refresh");
 		$this->load->model("News_model");
 		$result = array();
 		$result = $this->News_model->get_info($_SESSION['name']);
@@ -118,6 +143,7 @@ class Forum extends CI_Controller
 			'yeux' => $result[0]->yeux,
 			'bio' => $result[0]->bio,
 			'photo' => $result[0]->photo,
+			'pseudo' => $result[0]->pseudo,
 			'test' => $test,
 			'bug' => $_SESSION['name']
 		);
@@ -167,7 +193,7 @@ class Forum extends CI_Controller
 			$pseudo = $this->input->post('pseudo');
 			$this->load->model("Users");
 			$this->Users->reg_users($pseudo, $mdp, $email);
-			redirect("index.php/Forum/login", "refresh");
+			redirect("http://localhost/CodeIgniter-3.1.10/index.php/Forum/login", "refresh");
 		}
 		else
 		{
@@ -196,12 +222,17 @@ class Forum extends CI_Controller
 	public function agence() {
 		$this->load->view("connexion_good");
 	}
+
 	public function fetch() {
 		$this->load->model("News_model");
 		echo $this->News_model->fetch_data($this->uri->segment(3));
 	}
+
+	public function change_mdp() {
+		$this->load->view('change_mdp');
+	}
 	public function index() {
-		$this->output->enable_profiler(true);
+
 		/*$this->load->model("News_model");
 		$result = array();
 		$result = $this->News_model->get_info();

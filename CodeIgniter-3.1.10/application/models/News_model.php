@@ -3,7 +3,7 @@
 class News_model extends CI_Model
 {
 	public function get_info($email) {
-		$query = $this->db->select('nom, prenom, cheveux, taille, poids, yeux, bio, photo')
+		$query = $this->db->select('nom, prenom, cheveux, taille, poids, yeux, bio, photo, pseudo, tdp, tdt, tdh, tatouage, piercing')
 					 ->from('utilisateurs')
 					 ->where('email' ,$email)
                      ->get()
@@ -32,6 +32,15 @@ class News_model extends CI_Model
 			}
 			echo json_encode($output);
 		}
+	}
+	
+	public function search_profil($pseudo) {
+		$query = $this->db->select('nom, prenom, cheveux, taille, poids, yeux, bio, photo, pseudo, email')
+					->from('utilisateurs')
+					->where('pseudo' ,$pseudo)
+					->get()
+					->result();
+		return $query;
 	}
 }
 

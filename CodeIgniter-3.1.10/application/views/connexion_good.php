@@ -132,9 +132,7 @@
 			<article class="FileA">
 			<h1> file d'actualiter</h1>
 			</article>
-      <footer class="container">
-        <p>&copy; 2018 Dreampass, Tous droits réservés </a></p>
-      </footer>
+      <?php  $this->load->view('footer'); ?>
 			<hr class="featurette-divider">
     </main>
 

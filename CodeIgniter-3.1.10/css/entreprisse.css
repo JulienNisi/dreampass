@@ -44,7 +44,7 @@ body {
 .testo p {
     position: absolute;
     top: 45em;
-    width: 25em;
+    width: 10em;
     margin-left: 1.75em;
     padding-bottom: 25em;
     border:5px groove black;

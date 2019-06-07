@@ -135,3 +135,7 @@ a, a:hover{
     color: #ffffff;
     text-align: center;
 }
+
+.caract {
+    background-color: red;
+}

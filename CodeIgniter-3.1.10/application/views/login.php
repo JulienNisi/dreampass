@@ -129,9 +129,7 @@
 
 
       <!-- FOOTER -->
-      <footer class="container">
-        <p>&copy; 2018 Dreampass, Tous droits réservés </a></p>
-      </footer>
+      <?php  $this->load->view('footer'); ?>
     </main>
 
     <!-- Bootstrap core JavaScript

@@ -1,20 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <title>DreamPass</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:400,500,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
-    <!-- Custom styles for this template -->
-    <link href="../../carousel.css" rel="stylesheet">
-    <link href="../../seting.css" rel="stylesheet">
-		<link href="../../load.css" rel="stylesheet">
+    <?php  $this->load->view('head'); ?>
   </head>
   <body>
 
@@ -67,7 +54,7 @@
     <div>
       <ul class="seting">
         <li><a>Modifier le Profil</a></li>
-        <li><a>Changer de mot de passe</a></li>
+        <li><a href="change_mdp" >Changer de mot de passe</a></li>
         <li><a>Gérer les contacts</a></li>
         <li><a>Confidentialité du compte</a></li>
         <li><a>Email ou texto</a></li>
@@ -76,6 +63,7 @@
     <!--Page seting-->
     <article class="home">
       <div class="D1">
+        <div> <img src="../../img/1.jpg" class="DBI"> </div> 
         <div class="d1">Nisi Julien</div>
       </div>
     <form class="Fseting" method="post" action=''>
@@ -93,26 +81,79 @@
         </div>
       </div>
       <div class="FD1">
-        <aside class="FDA"><label>Cheveux</label> </aside>
+        <aside class="FDA"><label>Yeux</label> </aside>
         <div class="FDD">
-          <input class="FDDI" name="cheveux" type="text" placeholder="La couleur cheveux"  <?php echo 'value="' . $cheveux . '"' ;?>>
+
+          <select name="yeux" class="FDDI">
+            <option value="Bleu">Bleu</option>
+            <option value="Vert">Vert</option>
+            <option value="Brun">Brun</option>
+            <option value="Noisette">Noisette</option>
+            <option value="Noir">Noir</option>
+            <option value="Violet">Violet</option>
+            <option value="Gris">Gris</option>
+            <option value="Hétérochromie">Hétérochromie</option>
+          </select>
         </div>
       </div>
       <div class="FD1">
         <aside class="FDA"><label>Taille</label> </aside>
         <div class="FDD">
-          <input class="FDDI" name="taille" type="text" placeholder="Enter votre taille"  <?php echo 'value="' . $taille . '"' ;?>>
+          <input class="FDDI" name="taille" type="text" placeholder="Enter votre taille (cm)"  <?php echo 'value="' . $taille . '"' ;?>>
         </div>
       </div>
       <div class="FD1">
         <aside class="FDA"><label>Poids</label> </aside>
         <div class="FDD">
-          <input class="FDDI" name="poids" type="text" placeholder="Enter votre poids"  <?php echo 'value="' . $poids . '"' ;?>>
+          <input class="FDDI" name="poids" type="text" placeholder="Enter votre poids (kg)"  <?php echo 'value="' . $poids . '"' ;?>>
       </div>
       <div class="FD1">
-        <aside class="FDA"><label>Yeux</label> </aside>
+        <aside class="FDA"><label>cheveux</label> </aside>
         <div class="FDD">
-          <input class="FDDI" name="yeux" type="text" placeholder="La couleur vos yeux"  <?php echo 'value="' . $yeux . '"' ;?>>
+          <select name="cheveux" class="FDDI">
+            <option value="Noir">Noir</option>
+            <option value="Vert">Vert</option>
+            <option value="Brun">Brun</option>
+            <option value="Châtain">Châtain</option>
+            <option value="Roux">Roux</option>
+            <option value="Blond vénitien">Blond vénitien</option>
+            <option value="Gris">Gris</option>
+            <option value="Blond">Blond</option>
+            <option value="Blond claire">Blond claire</option>
+            <option value="Blond foncé">Blond foncé</option>
+            <option value="Blanc">Blanc</option>
+          </select>
+      </div>
+      <div class="FD1">
+        <aside class="FDA"><label>Tour de poitrine</label> </aside>
+        <div class="FDD">
+          <input class="FDDI" name="tourDePoitrine" type="text" placeholder="Tour de poitrine (cm)">
+      </div>
+      <div class="FD1">
+        <aside class="FDA"><label>Tour de taille</label> </aside>
+        <div class="FDD">
+          <input class="FDDI" name="tourDeTaille" type="text" placeholder="Tour de taille (cm)">
+      </div>
+      <div class="FD1">
+        <aside class="FDA"><label>Tour de hanche</label> </aside>
+        <div class="FDD">
+          <input class="FDDI" name="tourDeHanche" type="text" placeholder="Tour de hanche (cm)">
+      </div>
+      <div class="FD1">
+        <aside class="FDA"><label>Tatouage(s)</label> </aside>
+        <div class="FDD">
+          <select name="tatouage " class="FDDI">
+            <option value="Oui">Oui</option>
+            <option value="Non">Non</option>
+          </select>
+      </div>
+      <div class="FD1">
+        <aside class="FDA"><label>Piercing</label> </aside>
+        <div class="FDD">
+          <select name="piercing " class="FDDI">
+            <option value="Oui">Oui</option>
+            <option value="Non">Non</option>
+          </select>
       </div>
     	<div class="FD1">
         <aside class="FDA"><label>Bio</label> </aside>
@@ -123,23 +164,21 @@
       </div>
 			<hr>
     </form>
-		<?php echo form_open_multipart('index.php/Forum/edit');?>
-			<input type="file" name="userfile"/>
-			<input class="test" type="submit" name="submit" value="upload image"/>
+		<?php echo form_open_multipart('http://localhost/CodeIgniter-3.1.10/index.php/Forum/edit');?>
+			<input class="test5" type="file" name="userfile"/>
+			<input class="test" type="submit" name="submit" value="upload profil image"/>
 		</form>
 		</form>
-		<?php echo form_open_multipart('index.php/Forum/edit');?>
-			<input type="file" name="photofile"/>
-			<input class="test" type="submit" name="submit" value="upload image"/>
+		<?php echo form_open_multipart('http://localhost/CodeIgniter-3.1.10/index.php/Forum/edit');?>
+			<input class="test5" type="file" name="photofile"/>
+			<input class="test" type="submit" name="submit" value="upload image "/>
 		</form>
 
     </article>
 
     <hr>
     <!--footer-->
-    <footer class="container">
-        <p>&copy; 2018 Dreampass, Tous droits réservés </a></p>
-    </footer>
+    <?php  $this->load->view('footer'); ?>
 
     </main>
 
