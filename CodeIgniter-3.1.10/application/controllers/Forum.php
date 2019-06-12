@@ -14,6 +14,7 @@ class Forum extends CI_Controller
 		$this->load->helper('file');
 		$this->load->library('form_validation');
 		$this->load->model("News_model");
+		$bug = $_SESSION['name'];
 		$result = array();
 		$result = $this->News_model->get_info($_SESSION['name']);
 		$data = array(
@@ -35,6 +36,9 @@ class Forum extends CI_Controller
 		$this->form_validation->set_rules('yeux', 'Vos yeux',   'trim')set;*/
 
 		if ($this->form_validation->run() == TRUE) {
+			$photo = array();
+			$photo = $this->News_model->get_photos($_SESSION['name']);
+			$nbr = ((int)$_POST['delete_photo']) - 1;
 			$data = array(
 				"nom" => $_POST['nom'],
 				"prenom" => $_POST['prenom'],
@@ -44,9 +48,19 @@ class Forum extends CI_Controller
 				"yeux" => $_POST['yeux'],
 				"bio" => $_POST['test']
 			);
+			if ($nbr != -1) {
+				$i = 0;
+				foreach($photo as $_SESSION['name'] => $value) {
+					if ($i == $nbr) {
+						$this->News_model->delete_picture($value->url_photo);
+					}
+					$i++;
+				}
+				$_SESSION['name'] = $bug;
+			}
 			$this->db->where('email',$_SESSION['name']);
 			$this->db->update('utilisateurs', $data);
-			redirect("http://localhost/CodeIgniter-3.1.10/index.php/Forum/edit", "refresh");
+			redirect("http://localhost/CodeIgniter-3.1.10/index.php/Forum/profile", "refresh");
 		}
 		$config['upload_path']          = './img/';
 		$config['allowed_types']        = 'gif|jpg|png';
@@ -86,6 +100,7 @@ class Forum extends CI_Controller
 				redirect("http://localhost/CodeIgniter-3.1.10/index.php/Forum/profile", "refresh");
 		}
 	}
+
 	public function home()
 	{
 		/*print_r($_SESSION);
@@ -126,14 +141,25 @@ class Forum extends CI_Controller
 		unset($_SESSION['online']);
 		redirect("http://localhost/CodeIgniter-3.1.10/index.php/Forum/home", "refresh");
 	}
+
 	public function profile() {
 		if (!($_SESSION['online']))
 			redirect("http://localhost/CodeIgniter-3.1.10/index.php/Forum/home", "refresh");
 		$this->load->model("News_model");
+		$this->load->model("Fav");
+		$like;
 		$result = array();
 		$result = $this->News_model->get_info($_SESSION['name']);
 		$test = array();
 		$test = $this->News_model->get_photos($_SESSION['name']);
+		$nbr_fav = $this->Fav->count_fav($_SESSION['name']);
+		foreach($nbr_fav as $_SESSION['name'] => $value) {
+			if ($value->utilisateur == $result[0]->pseudo)
+				$like = TRUE;
+			else
+				$like = FALSE;
+
+		}
 		$data = array(
 			'nom' => $result[0]->nom,
 			'prenom' => $result[0]->prenom,
@@ -145,12 +171,19 @@ class Forum extends CI_Controller
 			'photo' => $result[0]->photo,
 			'pseudo' => $result[0]->pseudo,
 			'test' => $test,
-			'bug' => $_SESSION['name']
+			'bug' => $_SESSION['name'],
+			'like' => $like
 		);
 		$this->load->view('profile', $data);
 		$_SESSION['name'] = $_SESSION['name'];
-
-
+		if ($_POST["BFAV"] == "LIKE" || $_POST["BFAV"] == "NOLIKE") {
+			if (($_POST["BFAV"] == "LIKE") {
+				$this->Fav->add_fav($_SESSION['name'], $result[0]->pseudo);
+			}
+			else {
+				$this->Fav->delete_fav()($_SESSION['name'], $result[0]->pseudo);
+			}
+		}
 	}
 	public function login() {
 		$this->form_validation->set_rules('email', 'Votre mail',   'trim|required|valid_email');
@@ -229,7 +262,26 @@ class Forum extends CI_Controller
 	}
 
 	public function change_mdp() {
+		$this->load->model('News_model');
 		$this->load->view('change_mdp');
+		$result_mdp = $this->News_model->check_psw($_SESSION['name']);
+		$mdp_utilisateur = $result_mdp[0]->pass;
+		$this->form_validation->set_rules('APSW',    'APSW',        'trim|required|min_length[5]|max_length[52]|alpha_dash');
+		$this->form_validation->set_rules('NPSW',    'NPSW',        'trim|required|min_length[5]|max_length[52]|alpha_dash');
+		$this->form_validation->set_rules('psw-repeat', 'Mot de passe', 'required|matches[NPSW]|alpha_dash');
+		
+		if ($this->form_validation->run() == TRUE) {
+			if ($mdp_utilisateur == $_POST['APSW']) {
+				$MPSW = array(
+					'pass' => $_POST['NPSW']
+				);
+				$this->News_model->change_psw($_SESSION['name'], $MPSW);
+				redirect('http://localhost/CodeIgniter-3.1.10/index.php/Forum/home','refresh');	
+			}
+		}
+
+
+
 	}
 	public function index() {
 

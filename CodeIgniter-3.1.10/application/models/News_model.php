@@ -20,6 +20,12 @@ class News_model extends CI_Model
 
 	}
 
+	public function delete_picture($url_picture) {
+			$this->db->where('url_photo', $url_picture);
+			$this->db->delete('photos');
+			//$this->db->delete('url_photo');
+	}
+
 	public function fetch_data($query) {
 		$this->db->like("pseudo", $query);
 		$query = $this->db->get('utilisateurs');
@@ -34,6 +40,20 @@ class News_model extends CI_Model
 		}
 	}
 	
+	public function check_psw($email) {
+		$query = $this->db->select('pass')
+					->from('utilisateurs')
+					->where('email', $email)
+					->get()
+					->result();
+		return $query;
+	}
+
+	public function change_psw($email, $NPSW) {
+		$this->db->where('email', $_SESSION['name']);
+		$this->db->update('utilisateurs', $NPSW);
+	}
+
 	public function search_profil($pseudo) {
 		$query = $this->db->select('nom, prenom, cheveux, taille, poids, yeux, bio, photo, pseudo, email')
 					->from('utilisateurs')
@@ -42,6 +62,7 @@ class News_model extends CI_Model
 					->result();
 		return $query;
 	}
+
 }
 
 ?>

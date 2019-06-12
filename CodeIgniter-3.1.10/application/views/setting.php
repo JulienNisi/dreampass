@@ -103,6 +103,12 @@
         </div>
       </div>
       <div class="FD1">
+        <aside class="FDA"><label>delete photo</label> </aside>
+        <div class="FDD">
+          <input class="FDDI" name="delete_photo" type="text" placeholder="La photo" value="">
+        </div>
+      </div>
+      <div class="FD1">
         <aside class="FDA"><label>Poids</label> </aside>
         <div class="FDD">
           <input class="FDDI" name="poids" type="text" placeholder="Enter votre poids (kg)"  <?php echo 'value="' . $poids . '"' ;?>>

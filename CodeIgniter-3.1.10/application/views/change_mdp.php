@@ -53,8 +53,8 @@
     <!-- side bar setting -->
     <div>
       <ul class="seting">
-        <li><a>Modifier le Profil</a></li>
-        <li><a href="change_mdp" >Changer de mot de passe</a></li>
+        <li><a href="edit"> Modifier le Profil</a></li>
+        <li><a href="change_mdp"> Changer de mot de passe</a></li>
         <li><a>Gérer les contacts</a></li>
         <li><a>Confidentialité du compte</a></li>
         <li><a>Email ou texto</a></li>
@@ -71,19 +71,19 @@
       <div class="FD1">
         <aside class="FDA"><label>Ancien mot de passe</label> </aside>
         <div class="FDD">
-          <input class="FDDI" type="password" placeholder="Ancien mot de passe" name="nom" value="">
+          <input class="FDDI" type="password" placeholder="Ancien mot de passe" name="APSW" value="">
         </div>
       </div>
       <div class="FD1">
         <aside class="FDA"><label>Nouveau mot de passe</label> </aside>
         <div class="FDD">
-          <input class="FDDI" type="password" placeholder="Nouveau mot de passe" name="nom" value="">
+          <input class="FDDI" type="password" placeholder="Nouveau mot de passe" name="NPSW" value="">
         </div>
       </div>
       <div class="FD1">
         <aside class="FDA"><label>Confirmer le mot de passe</label> </aside>
         <div class="FDD">
-          <input class="FDDI" type="password" placeholder="Confirmer" name="nom" value="">
+          <input class="FDDI" type="password" placeholder="Confirmer" name="psw-repeat" value="">
         </div>
       </div>
       <hr>

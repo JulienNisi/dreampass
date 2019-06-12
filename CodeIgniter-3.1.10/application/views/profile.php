@@ -21,8 +21,14 @@
         <!-- Three columns of text below the carousel -->
         <div class="row">
           <div class="col-lg-4">
+            <form class="Fseting" method="post" action=''>
+              <?php 
+                
+              ?>
+              <button type="submit" value="LIKE" name="BFAV"> <img src="https://img.icons8.com/ios-glyphs/30/000000/hearts.png"> </button>
+            </form>
             <h2>
-								<?php echo $pseudo; ?>
+                <?php echo $pseudo; ?>
 						</h2>
             <img class="featurette-image img-fluid mx-auto"  <?php echo 'src="' . $photo . '"' ;?> alt="Generic placeholder image">
             <p> </p>

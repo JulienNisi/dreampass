@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  ven. 07 juin 2019 à 12:32
+-- Généré le :  jeu. 13 juin 2019 à 01:42
 -- Version du serveur :  10.1.40-MariaDB
 -- Version de PHP :  7.3.5
 
@@ -25,6 +25,17 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `fav`
+--
+
+CREATE TABLE `fav` (
+  `email` varchar(255) NOT NULL,
+  `utilisateur` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `photos`
 --
 
@@ -40,8 +51,6 @@ CREATE TABLE `photos` (
 INSERT INTO `photos` (`id_mail`, `url_photo`) VALUES
 ('nisi.julien', 'http://[::1]/CodeIgniter-3.1.10/img/typeneurone6.png'),
 ('nisi.julien', 'http://[::1]/CodeIgniter-3.1.10/img/Glande_surrenale_fr.jpg'),
-('nisi.julien@gmail.com', 'http://[::1]/CodeIgniter-3.1.10/img/typeneurone7.png'),
-('nisi.julien@gmail.com', 'http://[::1]/CodeIgniter-3.1.10/img/mitose2.png'),
 ('shauna@gmail.com', 'http://[::1]/CodeIgniter-3.1.10/img/poto13.jpg'),
 ('shauna@gmail.com', 'http://[::1]/CodeIgniter-3.1.10/img/photo22.jpg'),
 ('shauna@gmail.com', 'http://[::1]/CodeIgniter-3.1.10/img/46503970_765312233823820_9218949294281719808_n.jpg'),
@@ -80,7 +89,7 @@ CREATE TABLE `utilisateurs` (
 --
 
 INSERT INTO `utilisateurs` (`id`, `pseudo`, `pass`, `email`, `nom`, `date_inscription`, `prenom`, `cheveux`, `taille`, `poids`, `yeux`, `tdp`, `tdt`, `tdh`, `tatouage`, `piercing`, `bio`, `photo`) VALUES
-(1, 'Julien Nisi', '123456', 'nisi.julien@gmail.com', 'Nisi', '2019-03-01', 'Julien', 'Noir', 174, 60, 'Bleu', NULL, NULL, NULL, NULL, NULL, 'Bonjo\r\n\r\n\r\n\r\nurs je me suis inscrit sur ce site car j\'ai envie de percer de de réussir. Depuis petit je m\'intersse à ce domaine et donc en faire ma vie. Mais bon vu que je suis étudiant je n\'arrive pas à prendre le temps à faire le tour des agences sur internet ou plus donc je fais apeller ce site pour pouvoir m\'aider dans mes démarche', 'http://[::1]/CodeIgniter-3.1.10/img/julien1.png'),
+(1, 'Julien Nisi', '1234567', 'nisi.julien@gmail.com', 'Nisi', '2019-03-01', 'Julien', 'Noir', 174, 60, 'Bleu', NULL, NULL, NULL, NULL, NULL, 'Bonjo\r\n\r\n\r\n\r\nurs je me suis inscrit sur ce site car j\'ai envie de percer de de réussir. Depuis petit je m\'intersse à ce domaine et donc en faire ma vie. Mais bon vu que je suis étudiant je n\'arrive pas à prendre le temps à faire le tour des agences sur internet ou plus donc je fais apeller ce site pour pouvoir m\'aider dans mes démarche', 'http://[::1]/CodeIgniter-3.1.10/img/julien1.png'),
 (6, 'tuning68', 'julienestleplusbeau', 'julien.nisi@epitech.eu', 'nisi', '0000-00-00', 'julien', 'noir', 178, 89, 'brun', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (7, 'tuningd', 'julienle', 'heritiana.goetz@gmail.com', 'nisi', '0000-00-00', 'julien', 'noir', 178, 89, 'brun', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (8, 'tuning68', 'julienestundieu', 'julien.nisi@epitech.eu', 'nisi', '0000-00-00', 'julien', 'noir', 178, 89, 'brun', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
